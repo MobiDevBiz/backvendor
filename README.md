@@ -4,6 +4,8 @@ Backvendor
 Backvendor is an Yii extension that helps developers to speed up development of web services and administration sites based on Yii Framework.
 
 Feature list
+------------
+
 1.  Just one console command to create basic structure of your multi application system with common core.
 2.  Backend engine that allows creating CRUD pages by setting configurations in Yii style. You do not have to generate CRUD controllers and views for every ActiveRecord model - you generate models and configure custom options in array (e.g. image uploading for image fields). It allows you to change CRUD by changing models only.
 3.  JSON API Web service engine that supports this Protocol
