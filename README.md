@@ -8,7 +8,7 @@ Feature list
 
 1.  Just one console command to create basic structure of your multi application system with common core.
 2.  Backend engine that allows creating CRUD pages by setting configurations in Yii style. You do not have to generate CRUD controllers and views for every ActiveRecord model - you generate models and configure custom options in array (e.g. image uploading for image fields). It allows you to change CRUD by changing models only.
-3.  JSON API Web service engine that supports this Protocol
+3.  JSON API Web service engine
 4.  Auto documentation of API version generated as a web page
 5.  API versioning. You can make successors of your API versions to support older and newer once at one time.
 6.  Engine to create functional tests for your API due to TDD concept based on phpunit.
