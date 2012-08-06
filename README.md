@@ -14,6 +14,8 @@ Feature list
 6.  Engine to create functional tests for your API due to TDD concept based on phpunit.
 7.  Deployment script for moving your project to production server using Phing
 
+Resources
+---------
 
 Backvendor at Yii extensions - http://www.yiiframework.com/extension/backvendor
 
