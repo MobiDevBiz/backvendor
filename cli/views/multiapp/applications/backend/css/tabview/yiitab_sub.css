@@ -1,0 +1,80 @@
+/* 
+    Document   : jquery-yiitab
+    Created on : Nov 8, 2011, 2:46:07 PM
+    Author     : lisovin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+.yiiTab_sub ul.tabs
+{
+    padding: 2px 0;
+    margin: 0;
+    border-bottom: 1px solid #000000;
+    font: bold 12px Verdana, sans-serif;
+       width: 100%;
+    float: none;
+}
+
+.yiiTab_sub ul.tabs li
+{
+    list-style: none;
+    margin: 0;
+    display: inline;
+}
+
+.yiiTab_sub ul.tabs a
+{
+    -moz-border-radius-topleft:5px;
+    -moz-border-radius-topright:5px;
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+    padding: 2px 0.5em;
+    margin: 0 0 0 3px;
+    border: 1px solid #000000;
+    border-bottom: none;
+    background: #494B4D;
+    text-decoration: none;
+    float: none;
+}
+
+.yiiTab_sub ul.tabs a:link
+{
+	color: #ddd;
+}
+
+.yiiTab_sub ul.tabs a:visited
+{
+	color: #ddd;
+}
+
+.yiiTab_sub ul.tabs a:hover
+{
+    color: #000;
+    background: #E6F2FF;
+    border-color: #227;
+}
+
+.yiiTab_sub ul.tabs a.active
+{
+    background: white;
+    border-bottom: 1px solid white;
+     color: #667;
+}
+
+.yiiTab_sub div.view
+{
+    border-left: 1px solid #4F81BD;
+    border-right: 1px solid #4F81BD;
+    border-bottom: 1px solid #4F81BD;
+    padding: 8px;
+    margin: 0;
+}
+
+

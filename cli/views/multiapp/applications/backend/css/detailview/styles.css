@@ -1,0 +1,55 @@
+table.detail-view .null
+{
+	color: pink;
+}
+
+table.detail-view
+{
+	background: white;
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0;
+}
+
+table.detail-view th, table.detail-view td
+{
+	font-size: 0.9em;
+	border: 1px white solid;
+	padding: 0.3em 0.6em;
+	vertical-align: top;
+}
+
+table.detail-view td a
+{
+	color: black;
+	text-decoration: underline;
+}
+
+table.detail-view th
+{
+	text-align: right;
+	width: 160px;
+}
+
+table.detail-view tr.odd
+{
+	background:#C5C5C5;
+}
+
+table.detail-view tr.even
+{
+	background:#EDEDED;
+}
+
+table.detail-view tr.odd th
+{
+}
+
+table.detail-view tr.even th
+{
+}
+img.image_preview_view 
+{
+    max-width: 550px;
+    max-height: 550px;
+}

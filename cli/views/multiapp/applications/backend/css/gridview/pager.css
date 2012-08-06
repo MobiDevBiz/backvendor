@@ -1,0 +1,103 @@
+/**
+ * CSS styles for CLinkPager.
+ *
+ * @author Qiang Xue <qiang.xue@gmail.com>
+ * @link http://www.yiiframework.com/
+ * @copyright Copyright &copy; 2008-2010 Yii Software LLC
+ * @license http://www.yiiframework.com/license/
+ * @version $Id: pager.css 1678 2010-01-07 21:02:00Z qiang.xue $
+ * @since 1.0
+ */
+
+ul.yiiPager
+{
+	font-size:11px;
+	border:0;
+	margin:auto;
+	padding:0;
+	line-height:100%;
+	display:inline;
+}
+
+ul.yiiPager li
+{
+	display:inline;
+}
+
+ul.yiiPager a:link,
+ul.yiiPager a:visited
+{
+	
+	
+	text-decoration:none; 
+       
+         color:#000000;
+}
+
+ul.yiiPager .page 
+{
+	font-weight:normal;
+        background-image: url('../page_paginator_disabled.png');
+        text-align: center;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 210px;
+        height: 21px; 
+        padding: 0.5em 0.7em ;
+        cursor: pointer;
+/*  margin: 0.5em;*/
+  
+}
+
+ul.yiiPager .page:hover 
+{
+    background-image: url('../page_paginator_enabled.png');
+}
+
+ul.yiiPager .page:hover a
+{
+/*	background:#2e6ab1;*/
+	color:#FFFFFF;/*
+	font-weight:bold;*/
+        background: black;
+        
+       
+}
+
+ul.yiiPager .selected 
+{
+/*	background:#2e6ab1;
+*/	/*
+	font-weight:bold;*/
+        background-image: url('../page_paginator_enabled.png');
+        background-repeat: no-repeat;
+}
+
+ul.yiiPager .selected a
+{
+    color:#FFFFFF;
+      width: 210px;
+         height: 21px; 
+}
+
+ul.yiiPager .hidden a
+{
+	border:solid 1px #DEDEDE;
+	color:#888888;
+}
+
+/**
+ * Hide first and last buttons by default.
+ */
+ul.yiiPager .first,
+ul.yiiPager .last
+{
+/*	display:none;*/
+}
+ul.yiiPager .next:hover,
+ul.yiiPager .last:hover,
+ul.yiiPager .previous:hover,
+ul.yiiPager .first:hover
+{
+    text-decoration: underline;
+}
