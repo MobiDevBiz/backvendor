@@ -14,11 +14,18 @@ Feature list
 6.  Engine to create functional tests for your API due to TDD concept based on phpunit.
 7.  Deployment script for moving your project to production server using Phing
 
+Quick start
+-----------
+```bash
+ cd /path/to/webroot
+ git clone git@github.com:mobidevpublisher/backvendor.git  
+ cd backvendor
+ php bviic.php createmultiapp --path="/path/to/webroot/my-backvendor-project-folder"
+```
+
 Resources
 ---------
 
 Backvendor at Yii extensions - http://www.yiiframework.com/extension/backvendor
-
 Documentation - http://mobidev.biz/backvendor
-
 Demo project - https://github.com/mobidevpublisher/backvendor-demo
