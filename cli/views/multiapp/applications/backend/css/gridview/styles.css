@@ -1,0 +1,159 @@
+.grid-view-loading
+{
+	background:url(loading.gif) no-repeat;
+}
+
+.grid-view
+{
+	padding: 15px 0;
+/*        width: 90%;*/
+max-width: 100%;
+}
+
+.grid-view table.items thead
+{
+      -webkit-border-radius: 20px;    
+     
+      -moz-border-radius: 20px;    
+    
+      -o-border-radius: 20px;   
+}
+
+.grid-view table.items
+{
+	
+    background: white;
+	border-collapse: collapse;
+	max-width: 100%;
+/*	border: 1px #0E3DEF solid;*/
+}
+
+.grid-view table.items th, .grid-view table.items td
+{
+	font-size: 0.9em;
+	border: 1px white solid;
+	padding: 0.3em;
+/*        width: 100px;*/
+}
+
+.grid-view table.items th
+{
+	color: white;
+/*	background: url("bg.gif") repeat-x scroll left top white;*/
+	text-align: center;
+       
+    
+}
+
+.grid-view table.items th a
+{
+	color: #EEE;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.grid-view table.items td a
+{
+	color: black;
+	text-decoration: underline;
+}
+
+.grid-view table.items td img
+{
+	max-width: 120px;
+        max-height: 120px;
+}
+
+.grid-view table.items th a:hover
+{
+	color: #FFF;
+}
+
+.grid-view table.items th a.asc
+{
+	background:url(up.gif) right center no-repeat;
+	padding-right: 10px;
+}
+
+.grid-view table.items th a.desc
+{
+	background:url(down.gif) right center no-repeat;
+	padding-right: 10px;
+}
+
+.grid-view table.items tr.even
+{
+    background: #EDEDED ;
+}
+
+.grid-view table.items tr.odd
+{
+	background: #C5C5C5;
+}
+
+.grid-view table.items tr.selected
+{
+/*	background: #BCE774;*/
+}
+
+.grid-view table.items tr:hover
+{
+/*	background: #ECFBD4;*/
+}
+
+.grid-view .link-column img
+{
+	border: 0;
+}
+
+.grid-view table.items th.button-column,
+.grid-view table.items td.button-column
+{
+	text-align: center;
+	width: 25px;
+}
+
+.grid-view .button-column img
+{
+	border: 0;
+        padding: 5px;
+}
+
+.grid-view .checkbox-column
+{
+	width: 15px;
+}
+
+.grid-view .summary
+{
+	margin: 0 0 5px 0;
+	text-align: right;
+}
+
+.grid-view .pager
+{
+	margin: 5px 0 0 0;
+	text-align: right;
+}
+
+.grid-view .empty
+{
+	font-style: italic;
+}
+
+.grid-view .filters input,
+.grid-view .filters select
+{
+	width: 100%;
+	border: 1px solid #ccc;
+}
+.grid-view table.items td 
+{
+    border: 1px solid #000;
+    text-align: center;
+}
+img.image_preview_admin 
+{
+    max-width: 100px;
+    max-height: 100px;
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Your project name" default="deploy" basedir="..">
+    
+    <property name="gitRepository" value="git@..." override="true" />
+    <property name="srcdir"   value="/var/www/test-dir-to-git-clone" override="true" />
+    <property name="targetbuilddir"   value="/var/www/test-dir-to-deploy" override="true" />
+    <property name="serverType" value="production"  />
+    <property name="serverUserName" value="www-data:www-data"  />
+    
+    <taskdef name="minify" classname="${project.basedir}.build.extended.tasks.kpMinTask" />
+    
+    <target name="gitClone">
+        
+        <delete dir="${srcdir}" />
+        <echo msg="Checkout latest version from repository" />
+        <exec command="git clone ${gitRepository} ${srcdir}"  />
+    </target>
+    
+        <target name="lint"  depends="gitClone">
+            <phplint haltonfailure="true">
+                <fileset dir="${srcdir}">
+                    <exclude name="framework/**"/>
+                    <include name="*.php" />
+                    <include name="**/*.php" /> 
+                </fileset>
+            </phplint>
+    </target>
+    
+    <target name="deleteDevelopmentFiles" depends="lint">
+        <echo msg="Deleting all development files" />
+        <delete dir="${srcdir}/nbproject" />
+        <delete dir="${srcdir}/build" />
+        <delete dir="${srcdir}/.git" />
+        <delete file="${srcdir}/.gitignore" />
+    </target>
+    
+    <target name="buildApplications" depends="deleteDevelopmentFiles">
+        <foreach param="dirname" absparam="absname" target="buildApplication">
+            <fileset dir="${srcdir}/applications/">
+                <type type="dir" />
+                <depth max="0" min="0" />
+            </fileset>
+        </foreach>
+   </target> 
+   
+    <target name="buildApplication">  
+        <echo msg="Building ${absname}:" />
+        
+        <echo msg="Creating assets and runtime folders: " />
+        <mkdir dir="${absname}/assets" />
+        <mkdir dir="${absname}/protected/runtime" />
+        <chmod file="${absname}/assets" mode="777" />
+        <chmod file="${absname}/protected/runtime" mode="777" />
+        
+        <echo msg="Compressing js " />
+        <minify targetDir="${absname}/js"
+                  yuiPath="${project.basedir}/build/extended/tools/yuicompressor.jar">
+            <fileset dir="${absname}/js">
+              <include name="*.js"/>
+            </fileset>
+        </minify>
+        
+        <echo msg="Compressing css " />
+        <minify targetDir="${absname}/css"
+                  yuiPath="${project.basedir}/build/extended/tools/yuicompressor.jar">
+            <fileset dir="${absname}/css">
+              <include name="*.css"/>
+            </fileset>
+        </minify>
+        
+        <echo msg="Delete tests directory" />
+        <delete dir="${absname}/protected/tests" />
+        
+        <echo msg="Turn off debug mode in index.php for production" />
+        <if> <equals arg1="${serverType}" arg2="production" />
+             <then>
+                <delete file="${absname}/index.php" />
+                <copy todir="${absname}">
+                    <mapper type="glob" from="*_${serverType}.php" to="*.php"/>
+                    <fileset dir="${absname}" id="productionIndexes" >
+                        <include name="*_${serverType}.php" />
+                    </fileset>
+                </copy>
+                <delete>
+                    <fileset refid="productionIndexes"/>
+                </delete>
+             </then>
+             <else>
+               <echo message="It's not production, we are still in debug mode" />
+               <delete file="${absname}/index_production.php" />
+             </else>
+        </if>
+    </target>
+    
+    <target name="changeConfigsToProduction" depends="buildApplications">
+        <echo msg="Changing configs to ${serverType}" />
+        <delete file="${srcdir}/core/config/db.php" />
+        <delete file="${srcdir}/core/config/image_router.php" />
+        <copy todir="${srcdir}/core/config">
+            <mapper type="glob" from="*_${serverType}.php" to="*.php"/>
+            <fileset dir="${srcdir}/core/config" id="productionConfigs" >
+                <include name="*_${serverType}.php" />
+            </fileset>
+        </copy>
+        <delete>
+            <fileset refid="productionConfigs"/>
+        </delete>        
+    </target>
+    
+    <target name="databaseMigrate" depends="changeConfigsToProduction">
+        <echo msg="Process all available migrations. Please type yes or no in console to apply new changes or not..." />
+        <exec command="php ${srcdir}/applications/webservice/protected/yiic migrate"/>
+    </target>
+    
+    <target name="createPreviousVersionBackup" depends="databaseMigrate">
+        <echo msg="Creating previous version backup at  ${project.basedir}/build/backup" />
+        <tar destfile="${project.basedir}/build/backup/project.tar.gz" compression="gzip">
+            <fileset dir="${targetbuilddir}">
+                <include name="*" />
+            </fileset>
+        </tar>
+    </target>
+    
+    <target name="deploy" depends="createPreviousVersionBackup">
+        <echo msg="Deploying to final build directory" />
+        <delete dir="${targetbuilddir}" />
+        <copy todir="${targetbuilddir}">
+            <fileset dir="${srcdir}" id="allFinalFiles">                
+               <include name="**" />
+            </fileset>
+        </copy>
+        <delete dir="${srcdir}" />
+        <exec command="chown -R ${serverUserName} ${targetbuilddir}"  />
+        <foreach param="dirname" absparam="absname" target="chmodIndexPhp">
+            <fileset dir="${targetbuilddir}/applications/">
+                <type type="dir" />
+                <depth max="0" min="0" />
+            </fileset>
+        </foreach>
+    </target>
+    
+     <target name="chmodIndexPhp">
+         <chmod file="${absname}/index.php" mode="755" />
+     </target>
+    
+</project>

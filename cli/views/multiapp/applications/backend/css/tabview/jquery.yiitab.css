@@ -1,0 +1,99 @@
+/* 
+    Document   : jquery-yiitab
+    Created on : Nov 8, 2011, 2:46:07 PM
+    Author     : lisovin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+.yiiTab ul.tabs
+{
+    padding: 0;
+    margin-top: 20px;
+/*    border-bottom: 1px solid #4F81BD;*/
+    font: bold 12px Verdana, sans-serif;
+    width: 100px;
+    float: left;
+    background-color: transparent;
+}
+
+.yiiTab ul.tabs li
+{
+    list-style: none;
+    margin: 0;
+    display: inline;
+/*   width: 80px;*/
+   
+}
+
+.yiiTab ul.tabs a
+{
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+/*    padding: 2px 0.5em;*/
+/*    margin: 0 0 0 3px;*/
+/*    border: 1px solid #4F81BD;*/
+    border-bottom: none;
+    background: transparent;
+    text-decoration: none;
+    background-image: url(../page_btn_disabled.png);
+    background-repeat: no-repeat;
+     width: 97px;
+/*     padding-left: 40px;*/
+     padding: 12px;
+      float: left;
+      
+      
+      
+}
+
+.yiiTab ul.tabs a:link
+{
+	color: #ddd;
+}
+
+.yiiTab ul.tabs a:visited
+{
+	color: #ddd;
+}
+
+.yiiTab ul.tabs a:hover
+{
+    color: yellow;
+/*    background: #E6F2FF;*/
+    border-color: #Fb0;
+}
+
+.yiiTab ul.tabs a.active
+{
+    background: transparent;
+/*    border-bottom: 1px solid white;*/
+     background-image: url(../page_btn_enabled.png);
+       background-repeat: no-repeat;
+       color: #667
+}
+
+.yiiTab div.view
+{
+    -webkit-border-radius: 20px;    
+     -webkit-border-image:url(../page_border.png) 15 20 round;
+      -moz-border-radius: 20px;    
+     -moz-border-image:url(../page_border.png) 15 20 round;
+      -o-border-radius: 20px;    
+     -o-border-image:url(../page_border.png) 15 20 round;
+    border: 20px;
+    padding: 15px;
+    margin-left: 121px;
+    margin-top: 2px;
+    background-color: #DFDFDF;
+    min-height: 300px;
+    
+}
+
+
